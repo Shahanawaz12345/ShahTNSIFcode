@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Dice Game (Individual Project)</title>
+    <style>
+        body {
+            background-color: lightyellow;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+
+
+        }
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .dice {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid black;
+            margin: 10px;
+        }
+
+        .maindiv{
+            border: 10px black double;
+            display: inline-block;
+            padding: 40px 100px;
+            
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="maindiv">
+        <h1 style="font-family: Times new roman; background-color: greenyellow; display:inline-block;">Dice Game</h1>
+    <p>Click the button to roll the dice 3 times.</p>
+    <button onclick="rd()" style="background-color: lightblue;">Roll Dice</button>
+    
+
+    <div class="dice-container">
+        <div class="dice" id="d1">🎲</div>
+        <div class="dice" id="d2">🎲</div>
+    </div>
+    <p id="sum1"></p>
+    <p id="sum2"></p>
+    
+    <script>
+        function rd() {
+            let rolls = 0;
+            let sum1 = 0;
+            let sum2 = 0;
+            let interval = setInterval(() => {
+                let dice1 = Math.floor(Math.random() * 6) + 1;
+                let dice2 = Math.floor(Math.random() * 6) + 1;
+                sum1 = dice1 + sum1;
+                sum2 = dice2 + sum2;
+                document.getElementById('d1').textContent = dice1;
+                document.getElementById('d2').textContent = dice2;
+                document.getElementById('sum1').textContent = `Sum of Dice 1: ${sum1}`;
+                document.getElementById('sum2').textContent = `Sum of Dice 2: ${sum2}`;
+                rolls++;
+                if (rolls === 3) clearInterval(interval);
+            }, 1000);
+        }
+    </script>
+    </div>
+</body>
+</html>
